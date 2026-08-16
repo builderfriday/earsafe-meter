@@ -6,10 +6,10 @@ This repository is the specification package for `V1`.
 
 Contents:
 
+- `docs/specification.typ` — typeset source document
 - `docs/specification.pdf` — exported PDF manual
-- `scripts/build-pdf.js` — direct vector PDF generator
-- `scripts/build-pdf.sh` — repeatable build entrypoint
-- `package.json` — local build dependency definition
+- `scripts/build-pdf.sh` — repeatable build entrypoint with pinned `typst`
+- `scripts/render-preview.sh` — PNG preview render for visual QA
 
 Design intent:
 
@@ -18,7 +18,7 @@ Design intent:
 - Low-power display
 - Clear sound warning at a glance
 - Easy first build with standard modules
-- Clean document output with no browser-print layout
+- Clean document output with deterministic pagination
 
 Important:
 

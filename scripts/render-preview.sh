@@ -4,10 +4,17 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "${ROOT_DIR}"
 
+PAGES="${1:-1-3}"
+OUTPUT_DIR="${ROOT_DIR}/.preview"
 TYPST_BIN="$(./scripts/ensure-typst.sh)"
 
-export SOURCE_DATE_EPOCH=1735689600
+mkdir -p "${OUTPUT_DIR}"
+rm -f "${OUTPUT_DIR}"/page-*.png
+
 "${TYPST_BIN}" compile \
   --root "${ROOT_DIR}" \
+  --format png \
+  --pages "${PAGES}" \
+  --ppi 144 \
   docs/specification.typ \
-  docs/specification.pdf
+  "${OUTPUT_DIR}/page-{0p}.png"
